@@ -1,0 +1,179 @@
+/* 
+Botball Code
+Botball team coder
+February 25, 2019
+*/
+
+#include <kipr/botball.h>
+
+// user-defined function prototypes
+void drive_forward_4s();
+void drive_forward_and_turn_more();
+void turn_right_and_drive();
+void back_up();
+void bear_right();
+void mini_back_up();
+void turn_left();
+void bear_left();
+void drive_forward();
+void turn_right_and_drive_forward();
+void turn_right();
+void drive_backward();
+void drive_backward5s();
+int main()
+{
+//declare variables
+int count_left_motor;
+    
+  //Drive forward passed the first black line.
+    clear_motor_position_counter(0);
+	count_left_motor = 0;
+	while (count_left_motor <= 2000) // The Wallaby will drive for ( ) cm.
+	{
+	//Drive Forward passed the first black line.
+	motor(0,46);
+	motor(1,50);
+	count_left_motor=get_motor_position_counter(0);
+	}
+    
+    alloff(); //All motors off - stop all motors.
+    
+    //Robot will drive forward until the second black or grey line is reached.
+   while (analog(0) <= 2300)
+        {
+            motor(0,46);
+            motor(1,50);
+        }
+    
+    alloff(); //All motors off - stop all motors.
+   
+    motor(0,10);
+    motor(1,10);
+    msleep(4500);
+    alloff(); //All motors off - stop all motors.
+
+    turn_left();
+
+	drive_backward();
+    
+    alloff();
+    
+    turn_right();
+	
+    drive_backward5s();
+return 0;	
+} //end of main function
+
+//user-defined functions defined here
+void drive_forward_4s()
+{
+   motor(0,50);
+   motor(1,50);
+   msleep(4000);
+   ao();
+}
+void draw_bread(int sideLength,int turnLength)
+{
+	motor(0,45);
+	motor(1,50);
+	msleep(sideLength);
+	motor(0,53);
+	motor(1,10);
+	msleep(turnLength);
+}
+void back_up()
+{
+	motor(0,-100);
+	motor(1,-100);
+	msleep(2000);
+}
+void bear_right()
+{
+	motor(0,30);
+	motor(1,100);
+	msleep(5000);
+}
+void turn_left()
+{
+	motor(0,50);
+	motor(1,-10);
+	msleep(500);
+	motor(0,50);
+	motor(1,0);
+	msleep(500);
+}
+void turn_right()
+{
+	motor(0,-10);
+	motor(1,50);
+	msleep(1400);
+	motor(0,0);
+	motor(1,50);
+	msleep(1400);
+}
+void mini_back_up()
+{
+	motor(0,-50);
+	motor(1,-50);
+	msleep(2000);
+}
+void bear_left()
+{
+	motor(0,100);
+	motor(1,30);
+	msleep(2000);
+}
+void turn_right_and_drive()
+{
+	motor(0,0);
+	motor(1,0);
+	motor(0,50);
+	motor(1,-10);
+	msleep(2200);
+	motor(0,45);
+	motor(1,50);
+	msleep(3000);
+}
+void drive_forward()
+{
+	motor(0,46);
+	motor(1,50);
+	msleep(7000);
+}
+void turn_right_and_drive_forward()
+{
+	motor(0,0);
+	motor(1,0);
+	motor(0,50);
+	motor(1,-10);
+	msleep(1700);
+	motor(0,45);
+	motor(1,50);
+	msleep(3000);
+}
+void drive_forward_and_turn_more()
+{
+	motor(0,45);
+	motor(1,50);
+	msleep(1700);
+	motor(0,0);
+	motor(1,0);
+	motor(0,50);
+	motor(1,-10);
+	msleep(2150);
+	motor(0,45);
+	motor(1,50);
+	msleep(3500);
+}
+void drive_backward()
+{
+	motor(0,-46);
+	motor(1,-50);
+	msleep(20000);
+}
+void drive_backward5s()
+{
+	motor(0,-46);
+	motor(1,-50);
+	msleep(5000);
+}
